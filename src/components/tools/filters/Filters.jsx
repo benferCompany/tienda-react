@@ -1,58 +1,38 @@
-import { useState } from "react";
+import useFetch from "../../../hook/useFetch";
 
+const Filters = (prop) => {
 
-const Filters = () => {
-    const [rangeValueMin, setRangeValueMin] = useState(0);
-    const [rangeValueMax, setRangeValueMax] = useState(10000);
-    const handleFilterMin = (e) => {
-        console.log(e.target.value)
-        setRangeValueMin(e.target.value)
-
-
-
-    };
-
-    const handleFilterMax = (e) => {
-        console.log(e.target.value)
-        setRangeValueMax(e.target.value)
-
-
-
-    };
-    const handleInputFilterMin = (e) => {
-        setRangeValueMin(e.target.value)
-    }
-    const handleInputFilterMax = (e) => {
-        setRangeValueMax(e.target.value)
-    }
+    const { data:category } = useFetch("https://api.escuelajs.co/api/v1/categories", "category");
+    
+    const { formData, handleChangeFilter, handleSubmitFilters } = prop.prop;
     return (
         <>
             <div>
                 <div className="text-center">
                     <h2>Filtros</h2>
                 </div>
-                <form >
+                <form onSubmit={handleSubmitFilters} >
                     <div className="d-flex justify-content-around align-items-center">
                         <div className="form-group justify-content-center d-flex">
                             <div className="text-center">
                                 <label>Precio Minimo</label>
-                                <h3 >$<input onChange={handleInputFilterMin} value={rangeValueMin} className="text-center w-50" type="number" /></h3>
-                                <input type="range" onChange={handleFilterMin} value={rangeValueMin} min="0" max="10000" className="form-control-range" />
+                                <h3 >$<input name="piceMin" onChange={handleChangeFilter} value={formData.priceMin} className="text-center w-50" type="number" /></h3>
+                                <input type="range" name="priceMin" onChange={handleChangeFilter} value={formData.priceMin} min="0" max="10000" className="form-control-range" />
                             </div>
                         </div>
 
-                        <div class="form-group w-25 pb-5">
+                        <div className="form-group w-25 pb-5">
                             <div className="mt-2">
                                 <label >Buscar por titulo</label>
-                                <input className="form-control" type="text" placeholder="Ingrese un titulo" readonly />
+                                <input name="title" onChange={handleChangeFilter} className="form-control" type="text" placeholder="Ingrese un titulo" readonly />
                             </div>
                             <label>Seleccionar una categoría</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <select name="categoty" onChange={handleChangeFilter} className="form-control">
+                                <option value="none">Ingrese una categoria</option>
+                                {category && category.map((element, index) => {
+                                    return <option key={index} value={element.id}>{element.name}</option>
+                                })}
+
                             </select>
 
                         </div>
@@ -61,8 +41,8 @@ const Filters = () => {
                             <div className="form-group justify-content-center d-flex">
                                 <div className="text-center">
                                     <label>Precio Maximo</label>
-                                    <h3 >$<input onChange={handleInputFilterMax} value={rangeValueMax} className="text-center w-50" type="number" /></h3>
-                                    <input type="range" onChange={handleFilterMax} value={rangeValueMax} min="0" max="10000" className="form-control-range" />
+                                    <h3 >$<input name="priceMax" onChange={handleChangeFilter} value={formData.priceMax} className="text-center w-50" type="number" /></h3>
+                                    <input type="range" name="priceMax" onChange={handleChangeFilter} value={formData.priceMax} min="0" max="10000" className="form-control-range" />
                                 </div>
                             </div>
                         </div>

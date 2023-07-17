@@ -10,6 +10,7 @@ import ProductsByCategory from './components/products/products_by_category/Produ
 import { QueryClient, QueryClientProvider } from 'react-query';
 import React from 'react';
 import { AuthProvider } from './components/context/AuthContext';
+import Connected from "./components/login/connected/connected"
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ function App() {
               <Route path="/categories" element={<Categories />} />
               <Route path="/categories/:id/products" element={<ProductsByCategory />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/connected" element={<Connected />} />
               <Route path="/register" element={<Register />} />
               <Route path="/products" element={<Products />} />
             </Route>

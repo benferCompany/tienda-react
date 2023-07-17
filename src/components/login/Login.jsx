@@ -1,37 +1,37 @@
-import { useContext } from "react";
 import usePostData from "../../hook/usePostData";
 import useAuth from "../../hook/useAuth";
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext";
+import { Link } from "react-router-dom";
+import useGetHeader from "../../hook/useGetHeader";
 
 function Login() {
-    const { handleAuth, booleanAuth,setBooleanAuth,setAuth } = useAuth();
     const API_URL = 'https://api.escuelajs.co/api/v1/auth/login';
-    const { error, success, createUserMutation, handleCreateUser, handleInputChange } = usePostData(API_URL);
+    const { error, success, dataMutation, handleOnSubmit, handleInputChange } = usePostData(API_URL);
 
-    
-    const handleLogout = () => {
-        setBooleanAuth(false)
-        setAuth(null);
-        localStorage.clear();
-        
-    }
+    const { handleAuth, auth } = useContext(AuthContext);
 
-    if (booleanAuth) {
+    if (auth) {
+
         return (
-            <>
-                <h1>Volver</h1>
-                <button onClick={handleLogout}>Volver</button>
-            </>
+            <div>
+                <h2>Usted ha iniciado sesión con exito.</h2>
+                <Link to="/connected" className="btn btn-info">Mi perfil</Link>
+            </div>
         )
     }
 
-    if (success) {
-        handleAuth(createUserMutation.data)
+    if (!auth) {
+
+        handleAuth(dataMutation.data)
     }
+
+
     return (
         <>
             <div className="d-flex justify-content-center mt-5">
 
-                <form onSubmit={handleCreateUser} className="w-25 rounded border p-2">
+                <form onSubmit={handleOnSubmit} className="w-25 rounded border p-2">
                     <div className="justify-content-center d-flex "><h1>Ingresar</h1></div>
                     <div className="form-group">
                         <label >Email</label>
@@ -51,11 +51,12 @@ function Login() {
 
 
                     </div>
-                    {createUserMutation.isLoading && <span>Creando usuario...</span>}
+                    {dataMutation.isLoading && <span>Creando usuario...</span>}
                     {error &&
                         <span>Error al crear el usuario</span>
                     }
                     {success &&
+
                         <span>Usuario creado exitosamente</span>
                     }
                 </form>
