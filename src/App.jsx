@@ -11,7 +11,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import React from 'react';
 import { AuthProvider } from './components/context/AuthContext';
 import Connected from "./components/login/connected/connected"
-
+import CreateUser from "./components/login/create_user/CreateUser";
 const queryClient = new QueryClient();
 
 function App() {
@@ -28,6 +28,7 @@ function App() {
               <Route path="/connected" element={<Connected />} />
               <Route path="/register" element={<Register />} />
               <Route path="/products" element={<Products />} />
+              <Route path="/createuser" element={<CreateUser />} />
             </Route>
           </Routes>
         </BrowserRouter>

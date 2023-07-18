@@ -38,10 +38,10 @@ const usePostData = (API_URL) => {
         e.preventDefault()
         dataMutation.mutate(formData, {
             onSuccess: (json) => {
-                if (json.error == "Not Found" || json.statusCode == 401) {
+                if (json.error == "Not Found" || json.statusCode == 401 || json.statusCode == 400) {
                     setError(true);
                     setSuccess(false)
-                } else if (json.statusCode != 401) {
+                } else if (json.statusCode != 401 || json.statusCode != 400) {
                     setError(false);
                     setSuccess(true);
                 }
