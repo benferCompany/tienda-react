@@ -4,7 +4,6 @@ import useFetch from "../../../../hook/useFetch";
 const useFilter = (prop) => {
 
     const [formData, setFormData] = useState(prop);
-    const { url } = getFilter(formData);
     const [urlFetch, setUrlFech] = useState("https://api.escuelajs.co/api/v1/products/")
     const { data, loading, error } = useFetch(urlFetch, urlFetch);
 
@@ -18,10 +17,10 @@ const useFilter = (prop) => {
     };
 
     const handleSubmitFilters = (e) => {
-
+        const { url } = getFilter(formData);
         e.preventDefault()
         setUrlFech(url);
-       
+
         console.log(url)
 
 

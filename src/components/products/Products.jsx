@@ -9,10 +9,10 @@ import useFilter from "../tools/filters/hook_filters/useFilter";
 
 
 const nameCategory = {
-    "priceMin": 0,
-    "priceMax": 0,
+    "price_min": 0,
+    "price_max": 0,
     "title": "",
-    "categoty": ""
+    "category": ""
 
 }
 function Products() {

@@ -2,17 +2,17 @@
 const getFilter = (filter) => {
     const arrayFilter = [];
     
-    if (filter.categoty !== "" && filter.categoty !=="none") {
-        arrayFilter.push("categoryId=" + filter.categoty);
+    if (filter.category !== "" && filter.category !=="none") {
+        arrayFilter.push("categoryId=" + filter.category);
 
     }
 
-    if (filter.priceMin > 0) {
-        arrayFilter.push("price_min=" + filter.priceMin);
+    if (filter.price_min > 0) {
+        arrayFilter.push("price_min=" + filter.price_min);
 
     }
-    if (filter.priceMax > 0) {
-        arrayFilter.push("price_max=" + filter.priceMax);
+    if (filter.price_max > 0) {
+        arrayFilter.push("price_max=" + filter.price_max);
 
     }
     if (filter.title != "") {

@@ -16,8 +16,8 @@ const Filters = (prop) => {
                         <div className="form-group justify-content-center d-flex">
                             <div className="text-center">
                                 <label>Precio Minimo</label>
-                                <h3 >$<input name="piceMin" onChange={handleChangeFilter} value={formData.priceMin} className="text-center w-50" type="number" /></h3>
-                                <input type="range" name="priceMin" onChange={handleChangeFilter} value={formData.priceMin} min="0" max="10000" className="form-control-range" />
+                                <h3 >$<input name="price_min" onChange={handleChangeFilter} value={formData.price_min} className="text-center w-50" type="number" /></h3>
+                                <input type="range" name="price_min" onChange={handleChangeFilter} value={formData.price_min} min="0" max="10000" className="form-control-range" />
                             </div>
                         </div>
 
@@ -41,8 +41,8 @@ const Filters = (prop) => {
                             <div className="form-group justify-content-center d-flex">
                                 <div className="text-center">
                                     <label>Precio Maximo</label>
-                                    <h3 >$<input name="priceMax" onChange={handleChangeFilter} value={formData.priceMax} className="text-center w-50" type="number" /></h3>
-                                    <input type="range" name="priceMax" onChange={handleChangeFilter} value={formData.priceMax} min="0" max="10000" className="form-control-range" />
+                                    <h3 >$<input name="price_max" onChange={handleChangeFilter} value={formData.price_max} className="text-center w-50" type="number" /></h3>
+                                    <input type="range" name="price_max" onChange={handleChangeFilter} value={formData.price_max} min="0" max="10000" className="form-control-range" />
                                 </div>
                             </div>
                         </div>
