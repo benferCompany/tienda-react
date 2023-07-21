@@ -1,11 +1,10 @@
 import './App.css'
-import Home from './components/home/home';
+import Home from './components/home/Home';
 import Layout from './components/layout/Layout';
 import Categories from './components/categories/Categories';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Products from "./components/products/Products"
 import Register from './components/register/Register';
-import Login from './components/login/Login';
 import ProductsByCategory from './components/products/products_by_category/ProductsByCategory';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import React from 'react';
