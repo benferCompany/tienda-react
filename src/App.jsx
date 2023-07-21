@@ -11,7 +11,7 @@ import React from 'react';
 import { AuthProvider } from './components/context/AuthContext';
 import Connected from "./components/login/connected/connected"
 import CreateUser from "./components/login/create_user/CreateUser";
-import ValidateLogin from './components/login/validateLogin';
+import ValidateLogin from './components/login/ValidateLogin';
 const queryClient = new QueryClient();
 
 function App() {
