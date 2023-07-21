@@ -1,25 +1,13 @@
 import usePostData from "../../hook/usePostData";
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
-import { Link} from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 function Login() {
-    const navigator = useNavigate()
     const API_URL = 'https://api.escuelajs.co/api/v1/auth/login';
     const { error, success, dataMutation, handleOnSubmit, handleInputChange } = usePostData(API_URL);
-    
-    const { handleAuth, auth } = useContext(AuthContext);
 
-    if (auth) {
-        navigator("/connected")
-        return (
-            <div>
-                <h2>Usted ha iniciado sesión con exito.</h2>
-                <Link to="/connected" className="btn btn-info">Mi perfil</Link>
-                   
-            </div>
-        )
-    }
+    const { handleAuth } = useContext(AuthContext);
 
     if (success) {
 
@@ -28,7 +16,7 @@ function Login() {
 
 
     return (
-        <>
+        <>{
             <div className="d-flex justify-content-center mt-5">
 
                 <form onSubmit={handleOnSubmit} className="w-25 rounded border p-2">
@@ -62,6 +50,8 @@ function Login() {
                 </form>
 
             </div>
+        }
+
 
         </>
     )

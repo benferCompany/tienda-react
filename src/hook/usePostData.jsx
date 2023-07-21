@@ -51,7 +51,7 @@ const usePostData = (API_URL) => {
         });
 
     };
-    return {error, success, dataMutation,  handleOnSubmit, handleInputChange}
+    return {error, success, dataMutation,  handleOnSubmit, handleInputChange,formData}
 }
 
 export default usePostData;

@@ -3,21 +3,20 @@ import { createContext, useState } from "react";
 
 const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
-    
+
     let autentication = null;
-    if(localStorage.getItem('auth')){
-        autentication= {"access_token":localStorage.getItem('auth')};
+    if (localStorage.getItem('auth')) {
+        autentication = { "access_token": localStorage.getItem('auth') };
     }
     const [auth, setAuth] = useState(autentication);
-    const [userAutentic , setUserAutentic] = useState(false);
-    
+
     const handleAuth = (data) => {
-        
-        if(data){
+
+        if (data) {
             setAuth(data);
-            localStorage.setItem('auth',data.access_token)
+            localStorage.setItem('auth', data.access_token)
         }
-            
+
     }
 
     const handleLogout = () => {
