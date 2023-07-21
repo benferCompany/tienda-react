@@ -4,7 +4,7 @@ import usePagination from "../../hook/usePagination";
 
 function Categories() {
     const { startIndex, endIndex, handlePageChange, currentPage, pageSize } = usePagination();
-    const { data, error, loading } = useFetch("https://api.escuelajs.co/api/v1/categories");
+    const { data, error, loading } = useFetch("https://api.escuelajs.co/api/v1/categories","category");
     const dataCount = data ? data.length / pageSize : 0;
     return (
         <>

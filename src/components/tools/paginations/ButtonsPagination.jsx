@@ -1,9 +1,8 @@
-import usePagination from "../../../hook/usePagination";
 
 const ButtonsPagination = (prop) => {
     
     const {handlePageChange, currentPage, data, pageSize} = prop.prop;
-    console.log(currentPage)
+
    
     const dataCount = data ? data.length/pageSize:0;
     

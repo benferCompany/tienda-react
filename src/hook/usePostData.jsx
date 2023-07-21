@@ -10,7 +10,7 @@ const usePostData = (API_URL) => {
     const [error, setError] = useState(false);
     const [success, setSuccess] = useState(false);
 
-    const createUserMutation = useMutation(async () => {
+    const dataMutation = useMutation(async () => {
 
         const res = await fetch(API_URL, {
             method: 'POST',
@@ -30,19 +30,18 @@ const usePostData = (API_URL) => {
             ...formData,
             [event.target.name]: event.target.value,
         });
-        console.log(formData)
     };
 
-    const handleCreateUser = (e) => {
+    const handleOnSubmit = (e) => {
         setError(false)
         setSuccess(false)
         e.preventDefault()
-        createUserMutation.mutate(formData, {
+        dataMutation.mutate(formData, {
             onSuccess: (json) => {
-                if (json.error == "Not Found" || json.statusCode == 401) {
+                if (json.error == "Not Found" || json.statusCode == 401 || json.statusCode == 400) {
                     setError(true);
                     setSuccess(false)
-                } else if (json.statusCode != 401) {
+                } else if (json.statusCode != 401 || json.statusCode != 400) {
                     setError(false);
                     setSuccess(true);
                 }
@@ -52,7 +51,7 @@ const usePostData = (API_URL) => {
         });
 
     };
-    return {error, success, createUserMutation,  handleCreateUser, handleInputChange}
+    return {error, success, dataMutation,  handleOnSubmit, handleInputChange,formData}
 }
 
 export default usePostData;

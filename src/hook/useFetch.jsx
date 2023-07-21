@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useQuery } from "react-query";
 
-const useFetch = (API_URL) => {
+const useFetch = (API_URL,name) => {
 
   const [error, setError] = useState(false);
 
-  const { data, isError, isLoading: loading, isSuccess } = useQuery('products', async () => {
+  const { data, isError, isLoading: loading, isSuccess } = useQuery(name, async () => {
     try {
       const res = await fetch(API_URL);
       const json = await res.json();
@@ -20,7 +20,7 @@ const useFetch = (API_URL) => {
     }
   })
 
-  return { data, error, loading, isSuccess }
+  return  { data, error, loading, isSuccess }
 }
 
 export default useFetch;

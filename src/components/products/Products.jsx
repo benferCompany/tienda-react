@@ -1,16 +1,24 @@
 import CardProduct from "./card_product/Card_product";
-import useFetch from "../../hook/useFetch";
 import usePagination from "../../hook/usePagination";
 import ButtonsPagination from "../tools/paginations/ButtonsPagination";
 import Filters from "../tools/filters/Filters";
+import useFilter from "../tools/filters/hook_filters/useFilter";
 
 
 
 
 
+const nameCategory = {
+    "price_min": 0,
+    "price_max": 0,
+    "title": "",
+    "category": ""
+
+}
 function Products() {
+
+    const { formData, handleChangeFilter, handleSubmitFilters, data, loading, error } = useFilter(nameCategory)
     const { startIndex, endIndex, handlePageChange, currentPage, pageSize } = usePagination();
-    const { data, loading, error } = useFetch("https://api.escuelajs.co/api/v1/products");
 
     const prop = {
         "data": data,
@@ -20,12 +28,13 @@ function Products() {
 
     }
 
+
     return (
         <>
             <div>
                 <div className="bg-dark text-light">
                     <h1 className="ms-5">Productos</h1>
-                    <Filters/>
+                    <Filters prop={{ formData, handleChangeFilter, handleSubmitFilters }} />
                 </div>
                 <div className="row justify-content-center">
                     {data && data.slice(startIndex, endIndex).map((element, index) => {

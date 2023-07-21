@@ -1,18 +1,33 @@
 import { createContext, useState } from "react";
 
+
 const AuthContext = createContext();
-const AuthProvider = ({children})=>{
-    const [auth, setAuth] = useState(null);
-    const [booleanAuth, setBooleanAuth] = useState(false);
-    const handleAuth = (data)=>{
-        
-        setAuth(data);
-        setBooleanAuth(true);
+const AuthProvider = ({ children }) => {
+
+    let autentication = null;
+    if (localStorage.getItem('auth')) {
+        autentication = { "access_token": localStorage.getItem('auth') };
     }
-    const data = {auth,setAuth, handleAuth,booleanAuth,setBooleanAuth};
+    const [auth, setAuth] = useState(autentication);
+
+    const handleAuth = (data) => {
+
+        if (data) {
+            setAuth(data);
+            localStorage.setItem('auth', data.access_token)
+        }
+
+    }
+
+    const handleLogout = () => {
+        setAuth(null)
+        localStorage.removeItem('auth')
+    }
+
+    const data = { auth, setAuth, handleAuth, handleLogout };
 
     return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>
 }
 
-export {AuthProvider};
+export { AuthProvider };
 export default AuthContext;

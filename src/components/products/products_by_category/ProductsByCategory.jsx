@@ -6,7 +6,7 @@ import usePagination from "../../../hook/usePagination";
 function ProductsByCategory() {
     const { startIndex, endIndex, handlePageChange, currentPage, pageSize } = usePagination();
     const { id } = useParams();
-    const { data, error, loading } = useFetch(`https://api.escuelajs.co/api/v1/categories/${id}/products`);
+    const { data, error, loading } = useFetch(`https://api.escuelajs.co/api/v1/categories/${id}/products`,"productCategory");
     const dataCount = data ? data.length / pageSize : 0;
     let category = "";
     try {
