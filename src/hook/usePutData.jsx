@@ -2,18 +2,18 @@ import { useState } from "react";
 import { useMutation } from "react-query";
 
 
-const usePostData = (API_URL) => {
+const usePutData = (API_URL) => {
 
 
    
     const [formData, setFormData] = useState({});
     const [error, setError] = useState(false);
     const [success, setSuccess] = useState(false);
-
+    const [id, setId] = useState(1);
     const dataMutation = useMutation(async () => {
 
         const res = await fetch(API_URL, {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -35,7 +35,6 @@ const usePostData = (API_URL) => {
     const handleOnSubmit = (e) => {
         setError(false)
         setSuccess(false)
-        e.preventDefault()
         dataMutation.mutate(formData, {
             onSuccess: (json) => {
                 if (json.message) {
@@ -51,7 +50,7 @@ const usePostData = (API_URL) => {
         });
 
     };
-    return {error,setError,setSuccess, success, dataMutation,  handleOnSubmit, handleInputChange,formData}
+    return {error,setError,setSuccess, success, dataMutation,  handleOnSubmit, handleInputChange,formData,setId}
 }
 
-export default usePostData;
+export default usePutData;

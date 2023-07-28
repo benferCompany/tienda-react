@@ -23,12 +23,16 @@ function Login() {
                     <div className="justify-content-center d-flex "><h1>Ingresar</h1></div>
                     <div className="form-group">
                         <label >Email</label>
-                        <input type="email" name="email" onChange={handleInputChange} className="form-control" aria-describedby="emailHelp" placeholder="Ingrese su email" />
+                        <input onChange={(e) => {
+                            handleInputChange(e.target.name, e.target.value)
+                        }} type="email" name="email" className="form-control" aria-describedby="emailHelp" placeholder="Ingrese su email" />
 
                     </div>
                     <div className="form-group">
                         <label >Contraseña</label>
-                        <input type="password" name="password" onChange={handleInputChange} className="form-control" placeholder="Ingrese su contraseña" />
+                        <input onChange={(e) => {
+                            handleInputChange(e.target.name, e.target.value)
+                        }} type="password" name="password" className="form-control" placeholder="Ingrese su contraseña" />
                     </div>
                     <div className="mt-3 d-flex justify-content-around">
                         <button type="submit" className="btn btn-primary">Enviar</button>
