@@ -6,6 +6,11 @@ function Categories() {
     const { startIndex, endIndex, handlePageChange, currentPage, pageSize } = usePagination();
     const { data, error, loading } = useFetch("https://api.escuelajs.co/api/v1/categories","category");
     const dataCount = data ? data.length / pageSize : 0;
+
+    if (!Array.isArray(data)) {
+        // Manejar el caso donde data no es un array (puede ser null o undefined)
+        return null; // O devuelve un mensaje de error, una lista vacía, o cualquier otra cosa que necesites
+    }
     return (
         <>
             <div>

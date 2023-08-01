@@ -1,32 +1,16 @@
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useFetch from "../../../../hook/useFetch";
 import useAuth from "../../../../hook/useAuth";
 import { useState } from "react";
-import axios from "axios";
+import useDelete from "../../../../hook/useDelete";
+
 const ProductSuccess = () => {
     const { id } = useParams()
     const [success, setSuccess] = useState(false)
     const { data, error, loading, isSuccess, isIdle } = useFetch("https://api.escuelajs.co/api/v1/products/" + id, "product");
     const { isAdmin } = useAuth();
-    const handleDeleteClick = () => {
-        const isConfirmed = window.confirm('¿Estás seguro de que quieres eliminar este producto?');
-        if (isConfirmed) {
-            axios.delete("https://api.escuelajs.co/api/v1/products/" + id)
-                .then((response) => {
-                    
-                    if (response.status == 200) {
-                        setSuccess(true);
-                    }
-                }).catch((error) => {
-                    setSuccess(false);
-                    
-                })
-            // Aquí llamarías a la función para eliminar el producto por su ID
-            // Por ejemplo, handleDelete(id);
-
-
-        }
-    };
+    console.log(data)
+    const {handleDeleteClick}=useDelete("https://api.escuelajs.co/api/v1/products/", id)
 
     return (
         <>
@@ -58,6 +42,7 @@ const ProductSuccess = () => {
                                 <button onClick={handleDeleteClick} className="btn btn-danger me-2" >Eliminar</button>
                                 <Link className="btn btn-warning ms-2" to={"/productEdit/" + data.id}>Editar Producto</Link>
                             </div>}
+                            
                         </div>
                     </div>
                 </>}

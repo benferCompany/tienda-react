@@ -3,6 +3,7 @@ import usePagination from "../../hook/usePagination";
 import ButtonsPagination from "../tools/paginations/ButtonsPagination";
 import Filters from "../tools/filters/Filters";
 import useFilter from "../tools/filters/hook_filters/useFilter";
+import { useState } from "react";
 
 
 
@@ -19,7 +20,7 @@ function Products() {
 
     const { formData, handleChangeFilter, handleSubmitFilters, data, loading, error } = useFilter(nameCategory)
     const { startIndex, endIndex, handlePageChange, currentPage, pageSize } = usePagination();
-
+    
     const prop = {
         "data": data,
         "handlePageChange": handlePageChange,
@@ -38,7 +39,7 @@ function Products() {
                 </div>
                 <div className="row justify-content-center">
                     {data && data.slice(startIndex, endIndex).map((element, index) => {
-                        return <CardProduct key={index} data={element} />
+                        return <CardProduct key={index} data={{...element,index}}  />
                     })}
 
                     {error && <h1>Error en la petición!</h1>}

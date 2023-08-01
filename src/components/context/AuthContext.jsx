@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
 
-    let autentication = null;
+    let autentication = "";
     if (localStorage.getItem('auth')) {
         autentication = { "access_token": localStorage.getItem('auth') };
 
