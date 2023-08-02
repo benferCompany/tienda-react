@@ -5,12 +5,12 @@ const useFetch = (API_URL,name) => {
 
   const [error, setError] = useState(false);
 
-  const { data, isError, isLoading: loading, isSuccess } = useQuery(name, async () => {
+  const { data, isError, isLoading: loading, isSuccess,isIdle } = useQuery(name, async () => {
     try {
       const res = await fetch(API_URL);
       const json = await res.json();
 
-      if (json.error == "Not Found") {
+      if (json.error == "Not Found"|| json.message) {
         setError(true);
       }
       return json;
@@ -20,7 +20,7 @@ const useFetch = (API_URL,name) => {
     }
   })
 
-  return  { data, error, loading, isSuccess }
+  return  { data, error, loading, isSuccess,isIdle }
 }
 
 export default useFetch;
