@@ -2,6 +2,7 @@ import { useMutation } from 'react-query';
 import axios from 'axios';
 
 const usePutEdit = () => {
+
     const updateCategoryMutation = useMutation(
         (updatedCategory) => axios.put(`https://api.escuelajs.co/api/v1/categories/${updatedCategory.id}`, updatedCategory),
         {
