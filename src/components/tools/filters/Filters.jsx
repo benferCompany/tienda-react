@@ -2,9 +2,14 @@ import useFetch from "../../../hook/useFetch";
 
 const Filters = (prop) => {
 
-    const { data:category } = useFetch("https://api.escuelajs.co/api/v1/categories", "category");
-    
+    const { data: category } = useFetch("https://api.escuelajs.co/api/v1/categories", "category");
+
     const { formData, handleChangeFilter, handleSubmitFilters } = prop.prop;
+
+    if (!Array.isArray(category)) {
+        // Manejar el caso donde category no es un array (puede ser null o undefined)
+        return null; // O devuelve un mensaje de error, una lista vacía, o cualquier otra cosa que necesites
+    }
     return (
         <>
             <div>
