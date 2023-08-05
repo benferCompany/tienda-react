@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartComponent";
 import TdDetail from "./detail/TdDetail";
+import { Link } from "react-router-dom";
 
 
 const CartDetail = () => {
@@ -52,6 +53,8 @@ const CartDetail = () => {
 
 
                     </table>
+
+                    <div className="d-flex justify-content-center"><Link to="/purchaseDetail" className="btn btn-success btn-lg" type="button">Ir a detalles y generar comprobante</Link></div>
 
 
                 </form>
