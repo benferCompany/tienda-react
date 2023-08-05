@@ -20,8 +20,8 @@ import EditCategory from './components/categories/category/edit/EditCategory';
 import Category from './components/categories/category/Category';
 import CartProvider from './components/cart/context/CartComponent';
 import CartDetail from "./components/cart/cart-detail/CartDetail"
-import PurchaseDetail from './components/cart/purchaseDetail/PurchaseDetail';
 import PDFGenerator from './components/cart/purchaseDetail/pdfGenerator/PdfGenerator';
+
 const queryClient = new QueryClient();
 
 function App() {
