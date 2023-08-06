@@ -63,7 +63,7 @@ const CartProvider = ({ children }) => {
         
     };
     localStorage.setItem("carrito",JSON.stringify(products));
-    const data = { products, handleSubmit, deleteProduct, getTotal, total };
+    const data = { products, handleSubmit, deleteProduct, getTotal, total,setProducts };
     return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
 };
 

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import PurchaseDetail from '../PurchaseDetail';
+import { CartContext } from '../../context/CartComponent';
 
 const PDFGenerator = () => {
+    const {setProducts} = useContext(CartContext);
     const handleGeneratePDF = () => {
         const content = document.getElementById('content-to-pdf');
 
@@ -25,6 +27,8 @@ const PDFGenerator = () => {
             const pdfUrl = URL.createObjectURL(pdfBlob);
             const pdfWindow = window.open();
             pdfWindow.location.href = pdfUrl;
+            setProducts({})
+            localStorage.removeItem("carrito");
         });
     };
 
