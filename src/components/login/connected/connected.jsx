@@ -27,7 +27,6 @@ const Connected = () => {
                         <td>{data.email}</td>
                         <td>{data.role}</td>
                         <td>
-                            <Link to="/update" className="btn btn-success me-1">Actualizar</Link>
                             <Link onClick={() => { handleLogout() }} to="/login" className="btn btn-danger ms-1">Cerrar Sesion</Link>
                         </td>
                     </tr>

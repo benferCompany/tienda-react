@@ -20,6 +20,8 @@ import EditCategory from './components/categories/category/edit/EditCategory';
 import Category from './components/categories/category/Category';
 import CartProvider from './components/cart/context/CartComponent';
 import CartDetail from "./components/cart/cart-detail/CartDetail"
+import PDFGenerator from './components/cart/purchaseDetail/pdfGenerator/PDFGenerator';
+
 const queryClient = new QueryClient();
 
 function App() {
@@ -46,6 +48,7 @@ function App() {
                 <Route path="/editCategory/" element={<EditCategory />} />
                 <Route path="/editCategory/:idEdit" element={<EditCategory />} />
                 <Route path="/cartDetail" element={<CartDetail />} />
+                <Route path="/purchaseDetail" element={<PDFGenerator />} />
 
               </Route>
             </Routes>
